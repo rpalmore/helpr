@@ -1,5 +1,5 @@
 {
-  "name": "shopshare",
+  "name": "helpr",
   "version": "1.0.0",
   "description": "",
   "main": "server.js",
@@ -9,15 +9,17 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/rpalmore/shopShare.git"
+    "url": "git+https://github.com/rpalmore/helpr.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/rpalmore/shopShare/issues"
+    "url": "https://github.com/rpalmore/helpr/issues"
   },
-  "homepage": "https://github.com/rpalmore/shopShare#readme",
+  "homepage": "https://github.com/rpalmore/helpr#readme",
   "dependencies": {
-    "express": "^4.16.4"
+    "express": "^4.16.4",
+    "mysql2": "^1.6.5",
+    "sequelize": "^5.8.5"
   }
 }
