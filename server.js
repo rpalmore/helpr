@@ -1,4 +1,5 @@
 const express = require('express');
+const db = require('./models');
 const app = express();
 const port = process.env.PORT || 5000;
 const path = require('path');
@@ -16,5 +17,12 @@ app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname+'/client/build/index.html'));
 });
 
-// console.log that your server is up and running
-app.listen(port, () => console.log(`Listening on port ${port}\nNODE_ENV: ` + process.env.NODE_ENV));
+db.sequelize.sync().then(function() {
+   app.listen(port, () => console.log(`Listening on port ${port}\nNODE_ENV: ` + process.env.NODE_ENV));
+});
+
+db.sequelize
+  .query('SELECT * FROM users', { raw: true })
+  .then(users => {
+    console.log(users)
+  })

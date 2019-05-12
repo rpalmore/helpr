@@ -1,6 +1,12 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
+import {
+  BrowserRouter as Router,
+  Route,
+  Link
+} from 'react-router-dom';
+import Create from './Create.js';
+import Lists from './Lists.js';
 
 class App extends Component {
 state = {
@@ -24,16 +30,31 @@ state = {
     return body;
   };
 
+  handleClick = () => {
+    console.log("Get it, gurrrrl.")
+  };
+
   render() {
     return (
+      <Router> 
       <div className="App">
         <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
+          <Link onClick={this.handleClick} to='/create'>
+            <div>New List</div>
+          </Link>
+          <Link onClick={this.handleClick} to='/lists'>
+            <div>My Lists</div>
+          </Link>
+          <Link activeOnlyWhenExact={true} to='/'>
+            <div>Home</div>
+          </Link>
         </header>
           {/*Render the newly fetched data inside of this.state.data*/}
         <p className="App-intro">{this.state.data}</p>
       </div>
+      <Route path="/create" component={Create}/>
+      <Route path="/lists" component={Lists}/>
+      </Router>
     );
   }
 }
